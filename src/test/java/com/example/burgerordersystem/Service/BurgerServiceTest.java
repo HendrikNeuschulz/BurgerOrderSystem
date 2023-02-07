@@ -33,17 +33,17 @@ class BurgerServiceTest {
         @DisplayName("returns an empty list when the repository is empty")
         void getAllMenus_shouldReturnAllMenusOfAnEmptyRepository() {
             //When
-            when(menuRepoMock.getAllMenus()).thenReturn(new ArrayList<Menu>() {});
+            when(menuRepoMock.getMenus()).thenReturn(new ArrayList<Menu>() {});
 
             //Then
-            Assertions.assertEquals(new ArrayList<Menu>(), menuRepoMock.getAllMenus());
+            Assertions.assertEquals(new ArrayList<Menu>(), menuRepoMock.getMenus());
         }
 
          @Test
          @DisplayName("returns a list of menus when the repository is not empty")
          void getAllMenus_shouldReturnAllMenusOfANonEmptyRepository() {
              //When
-             when(menuRepoMock.getAllMenus()).thenReturn(new ArrayList<Menu>() {
+             when(menuRepoMock.getMenus()).thenReturn(new ArrayList<Menu>() {
                  {
                      add(menuMock);
                  }
@@ -52,7 +52,7 @@ class BurgerServiceTest {
              //Then
              Assertions.assertEquals(
                    new ArrayList<Menu>() {{add(menuMock);}},
-                   menuRepoMock.getAllMenus()
+                   menuRepoMock.getMenus()
              );
          }
          @Test
@@ -61,10 +61,10 @@ class BurgerServiceTest {
             //Given
              menuRepoMock.setMenus(null);
             //When
-             when(menuRepoMock.getAllMenus()).thenReturn(null);
+             when(menuRepoMock.getMenus()).thenReturn(null);
 
              //Then
-             Assertions.assertThrows(NullPointerException.class, () -> menuRepoMock.getAllMenus());
+             Assertions.assertThrows(NullPointerException.class, () -> menuRepoMock.getMenus());
          }
 
     }

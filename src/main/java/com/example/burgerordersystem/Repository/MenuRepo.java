@@ -9,7 +9,4 @@ import java.util.List;
 public class MenuRepo {
     private List<Menu> menus;
 
-    public List<Menu> getAllMenus() {
-        return menus;
-    }
 }
