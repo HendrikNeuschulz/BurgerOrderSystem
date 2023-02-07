@@ -1,8 +1,7 @@
-package com.example.burgerordersystem.Controller;
+package com.example.burgerordersystem.Service;
 import com.example.burgerordersystem.Model.Menu;
 
 import com.example.burgerordersystem.Repository.MenuRepo;
-import com.example.burgerordersystem.Service.BurgerService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
