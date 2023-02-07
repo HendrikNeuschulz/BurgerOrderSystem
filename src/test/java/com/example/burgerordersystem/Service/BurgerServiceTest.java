@@ -83,7 +83,7 @@ class BurgerServiceTest {
 
 
 			//Then
-			Assertions.assertNull(burgerService.getMenuById(1));
+			Assertions.assertEquals(Optional.ofNullable(null), burgerService.getMenuById(1));
 		}
 	}
 
