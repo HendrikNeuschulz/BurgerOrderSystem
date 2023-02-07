@@ -2,33 +2,70 @@ package com.example.burgerordersystem.Service;
 import com.example.burgerordersystem.Model.Menu;
 
 import com.example.burgerordersystem.Repository.MenuRepo;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 
 import static org.mockito.Mockito.*;
 
 
+@DisplayName("BurgerService Test")
 class BurgerServiceTest {
+    Menu menuMock;
+    MenuRepo menuRepoMock;
+    BurgerService burgerService;
+    BurgerService burgerServiceMock;
+    @BeforeEach
+    void setUpTestingEnvironment() {
+        //Given
+        menuMock = mock(Menu.class);
+//      BurgerService burgerService = mock(BurgerService.class);
+        menuRepoMock = mock(MenuRepo.class);
+        burgerService = new BurgerService(menuRepoMock);
+        burgerServiceMock = mock(BurgerService.class);
 
-    Menu menu = mock(Menu.class);
-//    BurgerService burgerService = mock(BurgerService.class);
-    MenuRepo menuRepo = mock(MenuRepo.class);
-    BurgerService burgerService = new BurgerService(menuRepo);
+    }
 
+    @Nested
+    @DisplayName("Test for getAllMenus()")
+    class getAllMenus {
+        @Test
+        @DisplayName("returns an empty list when the repository is empty")
+        void getAllMenus_shouldReturnAllMenusOfAnEmptyRepository() {
+            //When
+            when(menuRepoMock.getAllMenus()).thenReturn(new ArrayList<Menu>() {});
 
-    @Test
-    void getAllMenus_shouldReturnAllOrders() {
-                    //Given
+            //Then
+            Assertions.assertEquals(new ArrayList<Menu>(), menuRepoMock.getAllMenus());
+        }
 
-        when(menuRepo.getAllMenus().thenReturn(new ArrayList<Menu>() {}));
+         @Test
+         @DisplayName("returns a list of menus when the repository is not empty")
+         void getAllMenus_shouldReturnAllMenusOfANonEmptyRepository() {
+             //When
+             when(menuRepoMock.getAllMenus()).thenReturn(new ArrayList<Menu>() {
+                 {
+                     add(menuMock);
+                 }
+             });
 
-        //When
+             //Then
+             Assertions.assertEquals(
+                   new ArrayList<Menu>() {{add(menuMock);}},
+                   menuRepoMock.getAllMenus()
+             );
+         }
+         @Test
+         @DisplayName("throws an exception when the repository is null")
+         void getAllMenus_shouldThrowAnExceptionWhenTheRepositoryIsNull() {
+            //Given
+             menuRepoMock.setMenus(null);
+            //When
+             when(menuRepoMock.getAllMenus()).thenReturn(null);
 
-        //Then
-        Assertions.assertEquals(new ArrayList<Menu>(), menuRepo.getAllMenus());
-
+             //Then
+             Assertions.assertThrows(NullPointerException.class, () -> menuRepoMock.getAllMenus());
+         }
 
     }
 }
