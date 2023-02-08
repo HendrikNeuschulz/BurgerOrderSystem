@@ -16,7 +16,7 @@ public class Menu {
 
     private int id;
     private String name;
-    private BigDecimal price;
+    private int price;
 
     private MainDish mainDish;
     private SideDish sideDish;

@@ -12,6 +12,7 @@ import java.util.NoSuchElementException;
 
 @Getter
 @RequiredArgsConstructor
+@Repository
 public class MenuRepo {
     private List<Menu> menus = new ArrayList<>();
 
