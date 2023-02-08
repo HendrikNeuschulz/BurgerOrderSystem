@@ -4,21 +4,30 @@ import com.example.burgerordersystem.Model.Menu;
 import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 @Getter
 @RequiredArgsConstructor
 public class MenuRepo {
     private List<Menu> menus = new ArrayList<>();
 
-    public Optional<Menu> getMenuById(int id) {
-        return Optional.ofNullable(menus.stream().filter(menu -> menu.getId() == id).findFirst()).orElse(null);
+    public List<Menu> getMenus(){
+        return menus;
     }
 
-    public Optional<List<Menu>> addMenu(Menu menuMock) {
-        return null;
+    public Menu getMenuById(int id){
+         return menus.stream()
+                 .filter(menu -> menu.getId()== id).findFirst().get()
+                 .orElseThrow(NoSuchElementException::new);
+
+    }
+
+    public Menu addMenu(Menu menu) {
+        menus.add(menu);
+        return menu;
     }
 }
