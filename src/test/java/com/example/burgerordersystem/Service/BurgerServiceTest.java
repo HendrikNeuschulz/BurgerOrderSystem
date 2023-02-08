@@ -6,6 +6,7 @@ import com.example.burgerordersystem.Model.Menu;
 import com.example.burgerordersystem.Model.SideDish;
 import com.example.burgerordersystem.Repository.MenuRepo;
 import org.junit.jupiter.api.*;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import static org.mockito.Mockito.*;
 class BurgerServiceTest {
 	Menu menuMock;
 	MenuRepo menuRepoMock;
+	@MockBean
 	BurgerService burgerService;
 	BurgerService burgerServiceMock;
 	@BeforeEach
@@ -104,6 +106,7 @@ class BurgerServiceTest {
 					add(menuMock);
 				}
 			}));
+			// Then
 			Assertions.assertEquals(new ArrayList<Menu>() {
 				{
 					add(menuMock);
