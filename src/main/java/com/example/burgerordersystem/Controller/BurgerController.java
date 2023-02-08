@@ -15,6 +15,6 @@ public class BurgerController {
 
     @GetMapping
     public List<Menu> getAllMenus() {
-
+         return null;
     }
 }
