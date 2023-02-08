@@ -14,4 +14,8 @@ public class MenuRepo {
     public Optional<Menu> getMenuById(int id) {
         return Optional.ofNullable(menus.stream().filter(menu -> menu.getId() == id).findFirst()).orElse(null);
     }
+
+    public Optional<List<Menu>> addMenu(Menu menuMock) {
+        return null;
+    }
 }

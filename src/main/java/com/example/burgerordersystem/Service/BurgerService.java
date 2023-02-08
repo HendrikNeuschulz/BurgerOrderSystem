@@ -20,4 +20,8 @@ public class BurgerService {
     public List<Menu> getMenus() {
         return menuRepo.getMenus();
     }
+
+    public Optional<List<Menu>> addMenu(Menu menuMock) {
+        return menuRepo.addMenu(menuMock);
+    }
 }
