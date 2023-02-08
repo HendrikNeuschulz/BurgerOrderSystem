@@ -2,12 +2,15 @@ package com.example.burgerordersystem.Repository;
 
 import com.example.burgerordersystem.Model.Menu;
 import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Data
+@Getter
+@RequiredArgsConstructor
 public class MenuRepo {
     private List<Menu> menus = new ArrayList<>();
 
