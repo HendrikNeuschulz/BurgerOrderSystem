@@ -22,4 +22,6 @@ public class Menu {
     private SideDish sideDish;
     private Beverage beverage;
 
+
+
 }
