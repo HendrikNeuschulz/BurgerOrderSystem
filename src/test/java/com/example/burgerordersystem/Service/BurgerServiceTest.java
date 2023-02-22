@@ -12,7 +12,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 import static org.mockito.Mockito.*;
 
@@ -33,7 +33,7 @@ class BurgerServiceTest {
 			{
 				setId(1);
 				setName("New invalid menu because of the forgotten side dish");
-				setPrice(new BigDecimal(1000));
+				setPrice(1000);
 				setMainDish(MainDish.HAMBURGER);
 				setSideDish(null);
 				setBeverage(Beverage.HOT_BEVERAGE);
@@ -81,7 +81,7 @@ class BurgerServiceTest {
 		@DisplayName("returns a menu when the repository contains a menu with given id")
 		void getMenuById_shouldReturnAMenuWhenTheRepositoryContainsAMenuWithGivenId() {
 			//When
-			Optional expected =  Optional.ofNullable(menuMock);
+			Menu expected =  menuMock;
 			//Then
 			Assertions.assertEquals(expected, burgerService.getMenuById(1));
 		}
@@ -91,7 +91,7 @@ class BurgerServiceTest {
 		void getMenuById_shouldReturnNullWhenTheRepositoryDoesNotContainAMenuWithGivenId() {
 
 			//Then
-			Assertions.assertEquals(Optional.ofNullable(null), burgerService.getMenuById(1));
+			Assertions.assertEquals(null, burgerService.getMenuById(1));
 		}
 	}
 
@@ -104,7 +104,7 @@ class BurgerServiceTest {
 			// When
 			when(menuMock.getId()).thenReturn(1); // these whole things could be refactored into a method of Menu class, like menu.isValid()
 			when(menuMock.getName()).thenReturn("Burger");
-			when(menuMock.getPrice()).thenReturn(new BigDecimal(1000));
+			when(menuMock.getPrice()).thenReturn(1000);
 			when(menuMock.getMainDish()).thenReturn(MainDish.HAMBURGER);
 			when(menuMock.getSideDish()).thenReturn(SideDish.FARM_WEDGES);
 			when(menuMock.getBeverage()).thenReturn(Beverage.HOT_BEVERAGE);

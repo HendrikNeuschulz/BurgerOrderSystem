@@ -8,6 +8,8 @@ public class BurgerOrderSystemApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BurgerOrderSystemApplication.class, args);
+
+        System.out.println("test");
     }
 
 }
